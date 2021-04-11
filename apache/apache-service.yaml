@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: apache
+  namespace: apache 
+  labels:
+    app: apache
+spec:
+  ports:
+    - port: 80
+  selector:
+    app: apache 
+    tier: frontend
+  type: ClusterIP 
+---

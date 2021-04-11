@@ -1,0 +1,24 @@
+---
+apiVersion: networking.k8s.io/v1beta1 
+kind: Ingress
+metadata:
+  namespace: "apache" 
+  name: "apache-ingress"
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod" 
+    nginx.ingress.kubernetes.io/proxy-body-size:  "50m" 
+spec:
+  tls:
+  - hosts:
+    - "apache.fortytwobinary.com" 
+    secretName: "apache-prod-tls" 
+  rules:
+  - host: "apache.fortytwobinary.com" 
+    http:
+      paths:
+        - path: /  
+          backend:
+            serviceName: "apache" 
+            servicePort: 80 
+---
+

@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins
+  namespace: jenkins
+  labels:
+    role: webserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      role: webserver
+  template:
+    metadata:
+      labels:
+        role: webserver 
+    spec:
+      containers:
+      - name: jenkins
+        image: jenkins4eval/jenkins
+        ports:
+          - name: http-port
+            containerPort: 8080
+          - name: jnlp-port
+            containerPort: 50000
+        volumeMounts:
+          - name: jenkins-persistent-storage
+            mountPath: /var/jenkins_home
+      volumes:
+        - name: jenkins-persistent-storage
+          persistentVolumeClaim:
+            claimName: pv003
+

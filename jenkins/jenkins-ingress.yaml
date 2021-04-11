@@ -1,0 +1,24 @@
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  namespace: "jenkins"
+  name: "jenkins-ingress"
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/proxy-body-size:  "50m"
+spec:
+  tls:
+  - hosts:
+    - "jenkins.fortytwobinary.com"
+    secretName: "jenkins-prod-tls"
+  rules:
+  - host: "jenkins.fortytwobinary.com"
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: "jenkins-public"
+            servicePort: 8080
+---
+

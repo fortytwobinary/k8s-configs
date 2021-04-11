@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apache
+  namespace: apache
+  labels:
+    role: webserver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      role: webserver
+  template:
+    metadata:
+      labels:
+        role: webserver
+    spec:
+      containers:
+      - name: frontend
+        image: httpd
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: apache-persistent-storage
+          mountPath: /usr/local/apache2/htdocs
+      volumes:
+      - name: apache-persistent-storage
+        persistentVolumeClaim:
+          claimName: pv001
