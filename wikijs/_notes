@@ -1,0 +1,15 @@
+April 11, 2021
+
+Today, wikijs did not work. After several hours I finally determined that while the pod 
+could connect to the MariaDB database, I could NOT connect to the database server using
+SSH. This is indicative of past problems that I have had with KM8-Ps (specific server hardware). For an unknown
+reason, I have to power-off the SBC and plug it back in to reboot. I have to risk an 
+unclean shutdown every time this occurs.
+
+It did show that I need:
+
+1. database backups
+2. periodic (timely) ssh service checks
+3. mariadb connection periodic checks
+4. shows the need for immediate problem understanding
+5. shows the need for quick restoration
