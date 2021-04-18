@@ -20,10 +20,7 @@ spec:
           image: dlwhitehurst/ftb-wiki:1.0.1
           env:
           - name: DB_HOST
-            valueFrom:
-              configMapKeyRef:
-                key: DB_HOST
-                name: mariadb-config
+            value: wikijs-mariadb
           - name: DB_PORT
             valueFrom:
               configMapKeyRef:
@@ -47,8 +44,8 @@ spec:
           - name: DB_PASS
             valueFrom:
               secretKeyRef:
-                name: mariadb 
-                key: password 
+                name: mariadb-pass
+                key: password
           ports:
           - containerPort: 3000
             protocol: TCP

@@ -10,18 +10,18 @@ spec:
   selector:
     matchLabels:
       app: wikijs
-      tier: mariadb
+      tier: mysql
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
         app: wikijs
-        tier: mariadb
+        tier: mysql
     spec:
       containers:
         - image: mariadb
-          name: mariadb
+          name: mysql
           env:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
