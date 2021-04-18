@@ -1,0 +1,24 @@
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  namespace: "wordpress"
+  name: "wordpress-ingress"
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/proxy-body-size:  "50m"
+spec:
+  tls:
+  - hosts:
+    - "wordpress.fortytwobinary.com"
+    secretName: "wordpress-prod-tls"
+  rules:
+  - host: "wordpress.fortytwobinary.com"
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: "wordpress"
+            servicePort: 80
+---
+
