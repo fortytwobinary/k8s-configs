@@ -1,0 +1,8 @@
+April 17, 2021
+- 192.168.1.21 is locked up again and the Jenkins mariadb backup stuck. I cannot connect
+to the machine and need to bring the database into K8s.
+
+- Fixing up configurations for a complete re-deploy of wikijs
+- need to pull a dump file or just run the backup after rebooting 192.168.1.21 (complete)
+- create the pv and pvc for /mnt/ext/wikijs-mariadb
+- mkdir for ubuntu:ubuntu and chmod -R 700 (complete)
