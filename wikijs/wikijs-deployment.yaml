@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: wikijs
-          image: requarks/wiki:2
+          image: dlwhitehurst/ftb-wiki:1.0.1
           env:
           - name: DB_HOST
             valueFrom:
