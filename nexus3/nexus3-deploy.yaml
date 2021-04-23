@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nexus
+  namespace: nexus 
+  labels:
+    role: repo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      role: repo
+  template:
+    metadata:
+      labels:
+        role: repo
+    spec:
+      containers:
+      - name: nexus
+        image: dlwhitehurst/arm-nexus3 
+        ports:
+        - containerPort: 8081
+        - containerPort: 5000
+        volumeMounts:
+        - name: nexus-persistent-storage
+          mountPath: /nexus-data
+      volumes:
+      - name: nexus-persistent-storage
+        persistentVolumeClaim:
+          claimName: pv007

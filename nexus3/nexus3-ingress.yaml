@@ -1,0 +1,33 @@
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  namespace: "nexus"
+  name: "nexus3-ingress"
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/proxy-body-size:  "0"
+spec:
+  tls:
+  - hosts:
+    - "docker.fortytwobinary.com"
+    - "nexus.fortytwobinary.com"
+    secretName: "nexus-prod-tls"
+  rules:
+  - host: "nexus.fortytwobinary.com"
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: "nexus"
+            servicePort: 8081
+  - host: "docker.fortytwobinary.com"
+    http:
+      paths:
+        - path: /
+          backend:
+            serviceName: "nexus"
+            servicePort: 5000 
+
+---
+

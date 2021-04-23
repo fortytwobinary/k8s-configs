@@ -1,0 +1,5 @@
+# Notes
+
+- used service.yaml and nothing would work
+- compromised successfully with kubectl expose (ClusterIP) very simple
+- dump yamls are output from system after successful deployment and testing

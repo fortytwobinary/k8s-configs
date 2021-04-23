@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2021-04-22T23:39:27Z"
+  labels:
+    role: repo
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:role: {}
+      f:spec:
+        f:ports:
+          .: {}
+          k:{"port":5000,"protocol":"TCP"}:
+            .: {}
+            f:name: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+          k:{"port":8081,"protocol":"TCP"}:
+            .: {}
+            f:name: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+        f:selector:
+          .: {}
+          f:role: {}
+        f:sessionAffinity: {}
+        f:type: {}
+    manager: kubectl-expose
+    operation: Update
+    time: "2021-04-22T23:39:27Z"
+  name: nexus
+  namespace: nexus
+  resourceVersion: "6302241"
+  uid: 38def641-3a12-42a7-99a2-0cd79d4eb931
+spec:
+  clusterIP: 10.107.138.65
+  clusterIPs:
+  - 10.107.138.65
+  ports:
+  - name: port-1
+    port: 8081
+    protocol: TCP
+    targetPort: 8081
+  - name: port-2
+    port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    role: repo
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
