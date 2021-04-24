@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dillinger 
+  namespace: nodeport 
+  labels:
+    role: webservice-internal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      role: webservice-internal
+  template:
+    metadata:
+      labels:
+        role: webservice-internal
+    spec:
+      containers:
+      - name: dillinger 
+        image: ghcr.io/linuxserver/dillinger 
+        ports:
+        - containerPort: 8080
+---
+
