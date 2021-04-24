@@ -1,0 +1,65 @@
+apiVersion: v1
+items:
+- apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1beta1","kind":"Ingress","metadata":{"annotations":{"cert-manager.io/cluster-issuer":"letsencrypt-prod","nginx.ingress.kubernetes.io/proxy-body-size":"50m"},"name":"apache-ingress","namespace":"apache"},"spec":{"rules":[{"host":"apache.fortytwobinary.com","http":{"paths":[{"backend":{"serviceName":"apache","servicePort":80},"path":"/"}]}}],"tls":[{"hosts":["apache.fortytwobinary.com"],"secretName":"apache-prod-tls"}]}}
+      nginx.ingress.kubernetes.io/proxy-body-size: 50m
+    creationTimestamp: "2021-03-26T22:51:03Z"
+    generation: 1
+    managedFields:
+    - apiVersion: networking.k8s.io/v1beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:cert-manager.io/cluster-issuer: {}
+            f:kubectl.kubernetes.io/last-applied-configuration: {}
+            f:nginx.ingress.kubernetes.io/proxy-body-size: {}
+        f:spec:
+          f:rules: {}
+          f:tls: {}
+      manager: kubectl-client-side-apply
+      operation: Update
+      time: "2021-03-26T22:51:03Z"
+    - apiVersion: networking.k8s.io/v1beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:loadBalancer:
+            f:ingress: {}
+      manager: nginx-ingress-controller
+      operation: Update
+      time: "2021-03-26T22:51:18Z"
+    name: apache-ingress
+    namespace: apache
+    resourceVersion: "976997"
+    uid: a4b0ec48-c83d-4ed5-9c5e-10cef46b0381
+  spec:
+    rules:
+    - host: apache.fortytwobinary.com
+      http:
+        paths:
+        - backend:
+            service:
+              name: apache
+              port:
+                number: 80
+          path: /
+          pathType: ImplementationSpecific
+    tls:
+    - hosts:
+      - apache.fortytwobinary.com
+      secretName: apache-prod-tls
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 192.168.1.14
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

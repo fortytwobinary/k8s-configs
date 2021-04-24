@@ -1,0 +1,65 @@
+apiVersion: v1
+items:
+- apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1beta1","kind":"Ingress","metadata":{"annotations":{"cert-manager.io/cluster-issuer":"letsencrypt-prod","nginx.ingress.kubernetes.io/proxy-body-size":"50m"},"name":"wordpress-ingress","namespace":"wordpress"},"spec":{"rules":[{"host":"wordpress.fortytwobinary.com","http":{"paths":[{"backend":{"serviceName":"wordpress","servicePort":80},"path":"/"}]}}],"tls":[{"hosts":["wordpress.fortytwobinary.com"],"secretName":"wordpress-prod-tls"}]}}
+      nginx.ingress.kubernetes.io/proxy-body-size: 50m
+    creationTimestamp: "2021-04-15T20:45:19Z"
+    generation: 1
+    managedFields:
+    - apiVersion: networking.k8s.io/v1beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:cert-manager.io/cluster-issuer: {}
+            f:kubectl.kubernetes.io/last-applied-configuration: {}
+            f:nginx.ingress.kubernetes.io/proxy-body-size: {}
+        f:spec:
+          f:rules: {}
+          f:tls: {}
+      manager: kubectl-client-side-apply
+      operation: Update
+      time: "2021-04-15T20:45:19Z"
+    - apiVersion: networking.k8s.io/v1beta1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:loadBalancer:
+            f:ingress: {}
+      manager: nginx-ingress-controller
+      operation: Update
+      time: "2021-04-15T20:46:18Z"
+    name: wordpress-ingress
+    namespace: wordpress
+    resourceVersion: "4899975"
+    uid: 38812485-d044-455a-ab0e-c28df5a07132
+  spec:
+    rules:
+    - host: wordpress.fortytwobinary.com
+      http:
+        paths:
+        - backend:
+            service:
+              name: wordpress
+              port:
+                number: 80
+          path: /
+          pathType: ImplementationSpecific
+    tls:
+    - hosts:
+      - wordpress.fortytwobinary.com
+      secretName: wordpress-prod-tls
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 192.168.1.14
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

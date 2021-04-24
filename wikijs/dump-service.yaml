@@ -1,0 +1,112 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"name":"wikijs","namespace":"wikijs"},"spec":{"ports":[{"port":80,"protocol":"TCP","targetPort":3000}],"selector":{"app":"wikijs"},"type":"ClusterIP"}}
+    creationTimestamp: "2021-04-11T15:48:36Z"
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:kubectl.kubernetes.io/last-applied-configuration: {}
+        f:spec:
+          f:ports:
+            .: {}
+            k:{"port":80,"protocol":"TCP"}:
+              .: {}
+              f:port: {}
+              f:protocol: {}
+              f:targetPort: {}
+          f:selector:
+            .: {}
+            f:app: {}
+          f:sessionAffinity: {}
+          f:type: {}
+      manager: kubectl-client-side-apply
+      operation: Update
+      time: "2021-04-11T15:48:36Z"
+    name: wikijs
+    namespace: wikijs
+    resourceVersion: "4071769"
+    uid: 88ba8121-3592-4c53-a5e6-f235cb6fdfd1
+  spec:
+    clusterIP: 10.109.191.206
+    clusterIPs:
+    - 10.109.191.206
+    ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 3000
+    selector:
+      app: wikijs
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app":"wikijs"},"name":"wikijs-mariadb","namespace":"wikijs"},"spec":{"clusterIP":"None","ports":[{"port":3306}],"selector":{"app":"wikijs","tier":"mariadb"}}}
+    creationTimestamp: "2021-04-18T02:15:54Z"
+    labels:
+      app: wikijs
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:labels:
+            .: {}
+            f:app: {}
+        f:spec:
+          f:clusterIP: {}
+          f:ports:
+            .: {}
+            k:{"port":3306,"protocol":"TCP"}:
+              .: {}
+              f:port: {}
+              f:protocol: {}
+              f:targetPort: {}
+          f:selector:
+            .: {}
+            f:app: {}
+            f:tier: {}
+          f:sessionAffinity: {}
+          f:type: {}
+      manager: kubectl-client-side-apply
+      operation: Update
+      time: "2021-04-18T02:15:54Z"
+    name: wikijs-mariadb
+    namespace: wikijs
+    resourceVersion: "5338766"
+    uid: f9185a07-87fe-4547-9d2e-77a1a117d3d8
+  spec:
+    clusterIP: None
+    clusterIPs:
+    - None
+    ports:
+    - port: 3306
+      protocol: TCP
+      targetPort: 3306
+    selector:
+      app: wikijs
+      tier: mariadb
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

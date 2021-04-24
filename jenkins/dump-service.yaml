@@ -3,9 +3,9 @@ items:
 - apiVersion: v1
   kind: Service
   metadata:
-    creationTimestamp: "2021-04-22T23:39:27Z"
+    creationTimestamp: "2021-04-11T00:22:06Z"
     labels:
-      role: repo
+      role: webserver
     managedFields:
     - apiVersion: v1
       fieldsType: FieldsV1
@@ -17,13 +17,13 @@ items:
         f:spec:
           f:ports:
             .: {}
-            k:{"port":5000,"protocol":"TCP"}:
+            k:{"port":8080,"protocol":"TCP"}:
               .: {}
               f:name: {}
               f:port: {}
               f:protocol: {}
               f:targetPort: {}
-            k:{"port":8081,"protocol":"TCP"}:
+            k:{"port":50000,"protocol":"TCP"}:
               .: {}
               f:name: {}
               f:port: {}
@@ -36,26 +36,26 @@ items:
           f:type: {}
       manager: kubectl-expose
       operation: Update
-      time: "2021-04-22T23:39:27Z"
-    name: nexus
-    namespace: nexus
-    resourceVersion: "6302241"
-    uid: 38def641-3a12-42a7-99a2-0cd79d4eb931
+      time: "2021-04-11T00:22:06Z"
+    name: jenkins-public
+    namespace: jenkins
+    resourceVersion: "3945030"
+    uid: 7df1c7f1-bf04-4d8b-8d00-d17ce7c32002
   spec:
-    clusterIP: 10.107.138.65
+    clusterIP: 10.103.161.221
     clusterIPs:
-    - 10.107.138.65
+    - 10.103.161.221
     ports:
     - name: port-1
-      port: 8081
+      port: 8080
       protocol: TCP
-      targetPort: 8081
+      targetPort: 8080
     - name: port-2
-      port: 5000
+      port: 50000
       protocol: TCP
-      targetPort: 5000
+      targetPort: 50000
     selector:
-      role: repo
+      role: webserver
     sessionAffinity: None
     type: ClusterIP
   status:
