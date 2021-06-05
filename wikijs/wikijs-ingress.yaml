@@ -19,6 +19,6 @@ spec:
         - path: /  
           backend:
             serviceName: "wikijs" 
-            servicePort: 80 
+            servicePort: 3000 
 ---
 
